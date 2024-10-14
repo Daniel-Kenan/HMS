@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical History & Appointment Booking</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.0.1/dist/full.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="bg-gradient-to-b from-blue-50 to-blue-100 min-h-screen">
+
+  <div class="flex flex-col items-center justify-center space-y-10 py-12">
+    <!-- Medical History Card -->
+    <div class="card w-full max-w-3xl shadow-xl bg-white p-10 rounded-lg">
+      <h2 class="text-3xl font-bold text-center mb-6 text-blue-600">Your Medical History</h2>
+
+      <!-- Medical History Table -->
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr class="bg-blue-100 text-blue-900">
+              <th>Date</th>
+              <th>Condition</th>
+              <th>Treatment</th>
+              <th>Doctor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2024-10-10</td>
+              <td>Flu</td>
+              <td>Antiviral Medication</td>
+              <td>Dr. Smith</td>
+            </tr>
+            <tr>
+              <td>2024-09-20</td>
+              <td>Back Pain</td>
+              <td>Physical Therapy</td>
+              <td>Dr. Adams</td>
+            </tr>
+            <!-- Dynamically populated rows go here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Button to Trigger Appointment Booking Modal -->
+    <button class="btn btn-primary" id="bookAppointmentBtn">Book an Appointment</button>
+
+    <!-- Appointment Booking Modal -->
+    <!-- Appointment Booking Modal -->
+<dialog id="appointmentModal" class="modal">
+  <form method="post" action="/doctor/book-appointment" class="modal-box max-w-lg p-10 rounded-lg bg-white shadow-xl">
+      <h2 class="text-3xl font-bold text-center text-blue-600 mb-6">Book an Appointment</h2>
+
+      <!-- Patient Name -->
+      <div class="form-control mb-4">
+          <label class="label" for="name">
+              <span class="label-text font-semibold">Patient Name</span>
+          </label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" class="input input-bordered w-full" required>
+      </div>
+
+      <!-- Patient Email -->
+      <div class="form-control mb-4">
+          <label class="label" for="email">
+              <span class="label-text font-semibold">Email Address</span>
+          </label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" class="input input-bordered w-full" required>
+      </div>
+
+      <!-- Appointment Date -->
+      <div class="form-control mb-4">
+          <label class="label" for="date">
+              <span class="label-text font-semibold">Appointment Date</span>
+          </label>
+          <input type="date" id="date" name="date" class="input input-bordered w-full" required>
+      </div>
+
+      <!-- Appointment Time -->
+      <div class="form-control mb-4">
+          <label class="label" for="time">
+              <span class="label-text font-semibold">Appointment Time</span>
+          </label>
+          <input type="time" id="time" name="time" class="input input-bordered w-full" required>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-control mt-6">
+          <button type="submit" class="btn btn-success w-full">Confirm Appointment</button>
+      </div>
+
+      <!-- Close Button -->
+      <div class="modal-action mt-4">
+          <button class="btn btn-error" onclick="document.getElementById('appointmentModal').close()">Close</button>
+      </div>
+  </form>
+</dialog>
+
+  </div>
+
+  <script>
+    // Show the modal when the button is clicked
+    document.getElementById('bookAppointmentBtn').addEventListener('click', function() {
+      document.getElementById('appointmentModal').showModal();
+    });
+  </script>
+</body>
+</html>

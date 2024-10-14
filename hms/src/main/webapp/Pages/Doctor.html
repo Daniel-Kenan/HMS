@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Doctor's Appointment Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@3.0.1/dist/full.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+  <div class="container mx-auto py-12">
+    <h1 class="text-4xl font-bold text-center text-blue-600 mb-10">Appointment Management</h1>
+
+    <!-- Appointment List Card -->
+    <div class="card shadow-xl bg-white p-6 rounded-lg">
+      <h2 class="text-2xl font-bold mb-6 text-blue-500">Pending Appointments</h2>
+
+      <!-- Appointments Table -->
+      <div class="overflow-x-auto">
+        <table class="table w-full">
+          <thead>
+            <tr class="bg-blue-100 text-blue-900">
+              <th>Patient Name</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Status</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Sample Appointment 1 -->
+            <tr>
+              <td>John Doe</td>
+              <td>2024-10-15</td>
+              <td>10:00 AM</td>
+              <td><span class="badge badge-warning">Pending</span></td>
+              <td>
+                <button class="btn btn-success btn-xs" onclick="updateStatus('John Doe', 'Accepted')">Accept</button>
+                <button class="btn btn-error btn-xs" onclick="updateStatus('John Doe', 'Declined')">Decline</button>
+              </td>
+            </tr>
+            <!-- Sample Appointment 2 -->
+            <tr>
+              <td>Jane Smith</td>
+              <td>2024-10-16</td>
+              <td>1:00 PM</td>
+              <td><span class="badge badge-warning">Pending</span></td>
+              <td>
+                <button class="btn btn-success btn-xs" onclick="updateStatus('Jane Smith', 'Accepted')">Accept</button>
+                <button class="btn btn-error btn-xs" onclick="updateStatus('Jane Smith', 'Declined')">Decline</button>
+              </td>
+            </tr>
+            <!-- More appointments can go here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Function to update the status of an appointment
+    function updateStatus(patientName, status) {
+      // Update the status in the backend here (via an API call or form submission)
+
+      // For now, we just show a confirmation alert
+      alert(`Appointment for ${patientName} has been ${status}.`);
+
+      // In a real scenario, this would also update the status badge in the UI dynamically
+    }
+  </script>
+
+</body>
+</html>
