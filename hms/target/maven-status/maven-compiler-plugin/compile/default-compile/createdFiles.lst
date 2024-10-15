@@ -1,3 +1,16 @@
-hms/apd/servlets/DoctorAppointmentsServlet.class
+hms/apd/servlets/LoginServlet.class
+hms/apd/repo/UserRepo.class
+hms/apd/repo/MedicalHistoryRepo.class
+hms/apd/servlets/RegisterServlet.class
+hms/apd/models/User.class
+hms/apd/servlets/BookAppointmentServlet.class
+com/mycompany/hms/resources/JakartaEE10Resource.class
+hms/apd/repo/AppointmentRepo.class
+hms/apd/servlets/MedicalHistoryServlet.class
 hms/apd/service/AppointmentService.class
 com/mycompany/hms/JakartaRestConfiguration.class
+hms/apd/models/Appointment.class
+hms/apd/service/MedicalHistoryService.class
+hms/apd/models/MedicalHistory.class
+hms/apd/servlets/DoctorAppointmentsServlet.class
+hms/apd/service/UserService.class

@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
         // Log the login attempt
         System.out.println("Login attempt:");
         System.out.println("Email: " + email);
-        // Be cautious about logging puy asswords!
+        // Be cautious about logging passwords!
 
         // Validate the user credentials
         boolean isValidUser = userService.loginUser(email, password);
@@ -43,8 +43,15 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("loggedInUser", email); // Store user email or user object
 
-            // Redirect to the user's dashboard or home page
-            response.sendRedirect("Dashboard.jsp"); // Change to your actual dashboard page
+            // Check if the user is an admin
+            boolean isAdmin = userService.isUserAdmin(email); // Assuming you have a method to check if the user is an admin
+
+            // Redirect based on user role
+            if (isAdmin) {
+                response.sendRedirect("/hms/doctor/appointments");        
+            } else {
+                response.sendRedirect("/hms/doctor/book-appointment");
+            }
         } else {
             // Set an error message and forward back to the login page
             request.setAttribute("errorMessage", "Invalid email or password.");

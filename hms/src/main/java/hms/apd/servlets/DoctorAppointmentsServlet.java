@@ -35,33 +35,46 @@ public class DoctorAppointmentsServlet extends HttpServlet {
         List<MedicalHistory> medicalHistories = medicalHistoryService.getMedicalHistoryForUser(userEmail);
         List<Appointment> appointments = appointmentService.getAllAppointments();
 
-        out.println("<html>");
-        out.println("<head><title>Doctor Appointments</title></head>");
-        out.println("<body>");
-        out.println("<h1>All Appointments</h1>");
-        out.println("<table border='1'>");
-        out.println("<tr><th>ID</th><th>User</th><th>Date</th><th>Status</th><th>Actions</th></tr>");
+        out.println("<html lang='en'>");
+        out.println("<head>");
+        out.println("<title>Doctor Appointments</title>");
+        out.println("<link href='https://cdn.jsdelivr.net/npm/daisyui@2.45.0/dist/full.css' rel='stylesheet' />"); // Link to Daisy UI
+        out.println("</head>");
+        out.println("<body class='bg-base-200 p-6'>");
+        out.println("<div class='container mx-auto'>");
+        out.println("<h1 class='text-2xl font-bold'>All Appointments</h1>");
+        out.println("<table class='table w-full bg-white shadow-md rounded-lg mt-4'>");
+        out.println("<thead>");
+        out.println("<tr class='bg-base-300 text-base-content'>");
+        out.println("<th>ID</th><th>User</th><th>Date</th><th>Status</th><th>Actions</th>");
+        out.println("</tr></thead>");
+        out.println("<tbody>");
 
         for (Appointment appointment : appointments) {
-            out.println("<tr>");
+            out.println("<tr class='hover:bg-base-100'>");
             out.println("<td>" + appointment.getId() + "</td>");
             out.println("<td>" + appointment.getUser().getFirstName() + " " + appointment.getUser().getLastName() + "</td>");
             out.println("<td>" + appointment.getAppointmentDate() + "</td>");
             out.println("<td>" + appointment.getStatus() + "</td>");
             out.println("<td>");
-            out.println("<a href='accept?id=" + appointment.getId() + "'>Accept</a> | ");
-            out.println("<a href='decline?id=" + appointment.getId() + "'>Decline</a>");
+            out.println("<a href='accept?id=" + appointment.getId() + "' class='btn btn-success'>Accept</a> ");
+            out.println("<a href='decline?id=" + appointment.getId() + "' class='btn btn-error'>Decline</a>");
             out.println("</td>");
             out.println("</tr>");
         }
 
-        out.println("</table>");
-        out.println("<h1>Your Medical History</h1>");
-        out.println("<table border='1'>");
-        out.println("<tr><th>Date</th><th>Condition</th><th>Treatment</th><th>Doctor</th></tr>");
+        out.println("</tbody></table>");
+
+        out.println("<h1 class='text-2xl font-bold mt-8'>Your Medical History</h1>");
+        out.println("<table class='table w-full bg-white shadow-md rounded-lg mt-4'>");
+        out.println("<thead>");
+        out.println("<tr class='bg-base-300 text-base-content'>");
+        out.println("<th>Date</th><th>Condition</th><th>Treatment</th><th>Doctor</th>");
+        out.println("</tr></thead>");
+        out.println("<tbody>");
 
         for (MedicalHistory history : medicalHistories) {
-            out.println("<tr>");
+            out.println("<tr class='hover:bg-base-100'>");
             out.println("<td>" + history.getDate() + "</td>");
             out.println("<td>" + history.getCondition() + "</td>");
             out.println("<td>" + history.getTreatment() + "</td>");
@@ -69,8 +82,7 @@ public class DoctorAppointmentsServlet extends HttpServlet {
             out.println("</tr>");
         }
 
-        out.println("</table>");
-        out.println("</body>");
-        out.println("</html>");
+        out.println("</tbody></table>");
+        out.println("</div></body></html>");
     }
 }

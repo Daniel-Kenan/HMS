@@ -1,20 +1,21 @@
 package hms.apd.service;
 
 import hms.apd.models.MedicalHistory;
+import hms.apd.repo.MedicalHistoryRepo; // Assuming you have a repository for data access
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @ApplicationScoped
 public class MedicalHistoryService {
 
-    // This method simulates retrieval of medical history data
+    @Inject
+    private MedicalHistoryRepo medicalHistoryRepo; // Inject the repository to access database
+
+    // This method retrieves medical history data for a user by their email
     public List<MedicalHistory> getMedicalHistoryForUser(String email) {
-        List<MedicalHistory> history = new ArrayList<>();
-        // Simulate some data (replace with actual data retrieval logic)
-        history.add(new MedicalHistory(LocalDate.of(2024, 10, 10), "Flu", "Antiviral Medication", "Dr. Smith"));
-        history.add(new MedicalHistory(LocalDate.of(2024, 9, 20), "Back Pain", "Physical Therapy", "Dr. Adams"));
-        return history;
+        // Retrieve the medical history data from the repository
+        return medicalHistoryRepo.findByUserEmail(email); // Fetch data from the database
     }
 }

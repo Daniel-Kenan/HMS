@@ -10,6 +10,10 @@ public class UserService {
 
     @Inject
     private UserRepo userRepo;
+    
+   public User findUserByEmail(String email) {
+        return userRepo.findByEmail(email);
+    }
 
     public String registerUser(String firstName, String lastName, String email, String password, String cellphoneNumber) {
         // Check if a user with the same email or cellphone number already exists
@@ -33,7 +37,7 @@ public class UserService {
     }
     
     public boolean loginUser(String email, String password) {
-     User user = userRepo.findByEmail(email);
+        User user = userRepo.findByEmail(email);
 
         if (user == null) {
             return false; // User not found
@@ -44,5 +48,10 @@ public class UserService {
         }
 
         return true; // Login successful
+    }
+    
+    public boolean isUserAdmin(String email) {
+        User user = findByEmail(email); // Corrected method call to ensure proper retrieval
+        return user != null && user.isAdmin(); // Assuming isAdmin() returns a boolean
     }
 }

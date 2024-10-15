@@ -7,6 +7,7 @@
 /home/daniel-kenan-slinda/NetBeansProjects/hms/src/main/java/hms/apd/servlets/LoginServlet.java
 /home/daniel-kenan-slinda/NetBeansProjects/hms/src/main/java/hms/apd/models/User.java
 /home/daniel-kenan-slinda/NetBeansProjects/hms/src/main/java/hms/apd/servlets/MedicalHistoryServlet.java
+/home/daniel-kenan-slinda/NetBeansProjects/hms/src/main/java/hms/apd/repo/MedicalHistoryRepo.java
 /home/daniel-kenan-slinda/NetBeansProjects/hms/src/main/java/com/mycompany/hms/resources/JakartaEE10Resource.java
 /home/daniel-kenan-slinda/NetBeansProjects/hms/src/main/java/hms/apd/servlets/BookAppointmentServlet.java
 /home/daniel-kenan-slinda/NetBeansProjects/hms/src/main/java/hms/apd/service/UserService.java

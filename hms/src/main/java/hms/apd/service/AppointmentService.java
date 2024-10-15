@@ -1,9 +1,10 @@
 package hms.apd.service;
 
 import hms.apd.models.Appointment;
+import hms.apd.models.User;
 import hms.apd.repo.AppointmentRepo;
-import jakarta.inject.Inject;
 import jakarta.enterprise.context.RequestScoped;
+import jakarta.inject.Inject;
 import java.util.List;
 
 @RequestScoped
@@ -11,6 +12,9 @@ public class AppointmentService {
 
     @Inject
     private AppointmentRepo appointmentRepository;
+
+    @Inject // Inject UserService here
+    private UserService userService;
 
     public List<Appointment> getAllAppointments() {
         return appointmentRepository.findAll();
@@ -39,9 +43,13 @@ public class AppointmentService {
             appointmentRepository.update(appointment);
         }
     }
-    
-     public void saveAppointment(Appointment appointment) {
-        // Logic to save the appointment, e.g., to a database
-        appointmentRepository.save(appointment); // Example call to save method in repository
+
+    public User findUserByEmail(String email) {
+        return userService.findUserByEmail(email); // Delegate to UserService
     }
+    
+    public void saveAppointment(Appointment appointment) {
+    appointmentRepository.save(appointment); // Save the appointment to the repository
+}
+
 }
